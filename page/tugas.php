@@ -13,7 +13,7 @@ $message = '';
 $message_type = '';
 
 // Handle Form Submissions (Add, Update Status, Delete)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     $action = $_POST['action'] ?? '';
 
     if ($action === 'add') {

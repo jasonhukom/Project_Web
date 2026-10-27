@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "functions": {
+    "index.php": {
+      "runtime": "vercel-php@0.7.3"
+    },
+    "page/*.php": {
+      "runtime": "vercel-php@0.7.3"
+    }
+  },
+  "routes": [
+    {
+      "src": "/style/(.*)",
+      "dest": "/style/$1"
+    },
+    {
+      "src": "/image/(.*)",
+      "dest": "/image/$1"
+    },
+    {
+      "src": "/page/(.*)",
+      "dest": "/page/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
+  ]
+}

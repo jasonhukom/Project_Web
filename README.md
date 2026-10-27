@@ -82,6 +82,20 @@ Website ini menggunakan palet warna khas yang hangat, profesional, dan modern:
 
 ---
 
+## 🌐 Deploy Otomatis ke Web (GitHub Actions & Pages)
+
+Proyek ini telah dikonfigurasi dengan **GitHub Actions CI/CD** (`.github/workflows/deploy.yml`) untuk build dan deploy otomatis ke **GitHub Pages**:
+
+1. Buka repositori Anda di GitHub.
+2. Pergi ke tab **Settings** &rarr; **Pages** (di sidebar kiri).
+3. Pada bagian **Build and deployment** &rarr; **Source**, pilih **GitHub Actions**.
+4. Setiap kali Anda melakukan `git push origin main`, GitHub Actions akan:
+   - Menyiapkan environment PHP.
+   - Menjalankan `php build.php` untuk merender seluruh halaman ke folder `dist/`.
+   - Mempublikasikan website ke URL: `https://<username>.github.io/<nama-repo>/`.
+
+Juga tersedia file `vercel.json` bagi yang ingin menghubungkan repositori ini langsung ke platform **Vercel**.
+
 ## 📁 Struktur Direktori
 
 ```

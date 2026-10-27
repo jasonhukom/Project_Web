@@ -2,11 +2,12 @@
 if (!isset($base_url)) {
     $base_url = '';
 }
-$home_url   = ($base_url === '') ? 'index.php' : '../index.php';
-$jadwal_url = ($base_url === '') ? 'page/jadwal.php' : 'jadwal.php';
-$event_url  = ($base_url === '') ? 'page/event.php' : 'event.php';
-$kas_url    = ($base_url === '') ? 'page/kas.php' : 'kas.php';
-$tugas_url  = ($base_url === '') ? 'page/tugas.php' : 'tugas.php';
+$ext = defined('IS_STATIC_BUILD') ? '.html' : '.php';
+$home_url   = ($base_url === '') ? "index{$ext}" : "../index{$ext}";
+$jadwal_url = ($base_url === '') ? "page/jadwal{$ext}" : "jadwal{$ext}";
+$event_url  = ($base_url === '') ? "page/event{$ext}" : "event{$ext}";
+$kas_url    = ($base_url === '') ? "page/kas{$ext}" : "kas{$ext}";
+$tugas_url  = ($base_url === '') ? "page/tugas{$ext}" : "tugas{$ext}";
 ?>
 <footer class="site-footer">
     <div class="footer-container">

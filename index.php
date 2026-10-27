@@ -7,6 +7,7 @@ require_once __DIR__ . '/includes/functions.php';
 $page_title = "Beranda Portal Kelas";
 $current_page = "home";
 $base_url = "";
+$ext = defined('IS_STATIC_BUILD') ? '.html' : '.php';
 
 // Ambil data untuk dashboard
 $schedules = read_json('schedule.json');
@@ -89,8 +90,8 @@ require_once __DIR__ . '/includes/navbar.php';
             <?= $sapaan ?> kawan-kawan! Di sini kalian dapat mengakses Website resmi kelas, yang akan sangat membantu kalian dalam mengatur jadwal pelajaran, memantau tugas sekolah, transparansi uang kas, dan agenda kegiatan kelas.
         </p>
         <div class="hero-actions">
-            <a href="page/jadwal.php" class="btn btn-primary btn-lg">Lihat Jadwal Lengkap</a>
-            <a href="page/tugas.php" class="btn btn-secondary btn-lg">Cek Tugas Aktif (<?= $tugas_pending ?>)</a>
+            <a href="page/jadwal<?= $ext ?>" class="btn btn-primary btn-lg">Lihat Jadwal Lengkap</a>
+            <a href="page/tugas<?= $ext ?>" class="btn btn-secondary btn-lg">Cek Tugas Aktif (<?= $tugas_pending ?>)</a>
         </div>
     </section>
 
@@ -200,7 +201,7 @@ require_once __DIR__ . '/includes/navbar.php';
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
                         Cek jadwal pelajaran lengkap mingguan, jam istirahat, serta jadwal piket kebersihan kelas harian.
                     </p>
-                    <a href="page/jadwal.php" class="btn btn-outline btn-sm">Buka Jadwal &rarr;</a>
+                    <a href="page/jadwal<?= $ext ?>" class="btn btn-outline btn-sm">Buka Jadwal &rarr;</a>
                 </div>
             </div>
 
@@ -211,7 +212,7 @@ require_once __DIR__ . '/includes/navbar.php';
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
                         Monitoring PR dan tugas sekolah, tenggat waktu (deadline), link pengumpulan, dan update status.
                     </p>
-                    <a href="page/tugas.php" class="btn btn-outline btn-sm">Buka Tugas &rarr;</a>
+                    <a href="page/tugas<?= $ext ?>" class="btn btn-outline btn-sm">Buka Tugas &rarr;</a>
                 </div>
             </div>
 
@@ -222,7 +223,7 @@ require_once __DIR__ . '/includes/navbar.php';
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
                         Laporan kas terbuka dan transparan: pemasukan, pengeluaran perlengkapan, serta status bayar per siswa.
                     </p>
-                    <a href="page/kas.php" class="btn btn-outline btn-sm">Buka Kas &rarr;</a>
+                    <a href="page/kas<?= $ext ?>" class="btn btn-outline btn-sm">Buka Kas &rarr;</a>
                 </div>
             </div>
 
@@ -233,7 +234,7 @@ require_once __DIR__ . '/includes/navbar.php';
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
                         Kalender agenda kegiatan: Ujian Semester, Class Meeting, Kunjungan Industri, dan pameran karya siswa.
                     </p>
-                    <a href="page/event.php" class="btn btn-outline btn-sm">Buka Events &rarr;</a>
+                    <a href="page/event<?= $ext ?>" class="btn btn-outline btn-sm">Buka Events &rarr;</a>
                 </div>
             </div>
         </div>

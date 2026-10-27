@@ -1,0 +1,7 @@
+# Build output directory
+/dist/
+
+# Local environment & scratch files
+.DS_Store
+Thumbs.db
+*.log
