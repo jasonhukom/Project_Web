@@ -1,21 +1,25 @@
 <?php
 /**
- * Beranda - Portal Resmi Kelas X PPLG B
+ * Beranda Dashboard - SIMAS X PPLG B
+ * Sistem Informasi Manajemen Akademik & Siswa
  */
 require_once __DIR__ . '/includes/functions.php';
 
-$page_title = "Beranda Portal Kelas";
+$page_title = "Sistem Informasi Terpadu";
 $current_page = "home";
 $base_url = "";
 $ext = defined('IS_STATIC_BUILD') ? '.html' : '.php';
 
-// Ambil data untuk dashboard
+// Ambil seluruh data sistem informasi
 $schedules = read_json('schedule.json');
-$tugas_list = read_json('tugas.json');
-$kas_data = read_json('kas.json');
-$events_list = read_json('events.json');
+$tugas_list = read_json('tugas.json', []);
+$kas_data = read_json('kas.json', []);
+$events_list = read_json('events.json', []);
+$absensi_data = read_json('absensi.json', ['records' => []]);
+$inventaris_data = read_json('inventaris.json', ['peminjaman' => []]);
+$materi_list = read_json('materi.json', []);
+$aspirasi_data = read_json('aspirasi.json', ['polling' => [], 'aspirasi' => []]);
 
-// Hitung statistik dashboard
 // 1. Tugas pending
 $tugas_pending = 0;
 foreach ($tugas_list as $t) {
@@ -24,7 +28,7 @@ foreach ($tugas_list as $t) {
     }
 }
 
-// 2. Saldo Kas saat ini
+// 2. Saldo Kas
 $saldo_kas = 0;
 if (isset($kas_data['transaksi'])) {
     foreach ($kas_data['transaksi'] as $trx) {
@@ -36,7 +40,21 @@ if (isset($kas_data['transaksi'])) {
     }
 }
 
-// 3. Hari ini & Pelajaran Hari Ini
+// 3. Kehadiran siswa hari ini
+$total_siswa = count($absensi_data['records']);
+$hadir_count = 0;
+foreach ($absensi_data['records'] as $r) {
+    if ($r['status'] === 'Hadir') $hadir_count++;
+}
+$persen_hadir = ($total_siswa > 0) ? round(($hadir_count / $total_siswa) * 100) : 0;
+
+// 4. Alat Lab yang sedang dipinjam
+$alat_dipinjam = 0;
+foreach ($inventaris_data['peminjaman'] ?? [] as $p) {
+    if ($p['status'] === 'Dipinjam') $alat_dipinjam++;
+}
+
+// 5. Hari & Pelajaran
 $daftar_hari = [
     'Sunday' => 'Minggu',
     'Monday' => 'Senin',
@@ -51,7 +69,7 @@ $hari_ini = $daftar_hari[$hari_inggris] ?? 'Senin';
 $is_weekend = ($hari_ini === 'Sabtu' || $hari_ini === 'Minggu');
 $jadwal_hari_ini = $schedules['biasa'][$hari_ini] ?? [];
 
-// 4. Event Terdekat
+// 6. Event terdekat
 $event_terdekat = null;
 $hari_tersisa_event = 999;
 $today_str = date('Y-m-d');
@@ -65,7 +83,7 @@ foreach ($events_list as $ev) {
     }
 }
 
-// Waktu sapaan
+// Sapaan waktu
 $jam_sekarang = (int)date('H');
 if ($jam_sekarang >= 5 && $jam_sekarang < 11) {
     $sapaan = "Selamat Pagi";
@@ -84,33 +102,34 @@ require_once __DIR__ . '/includes/navbar.php';
 <main class="main-wrapper">
     <!-- Hero Banner -->
     <section class="hero-section">
-        <span class="hero-badge"><span style="color:#fcbf49;">●</span> X PPLG B PORTAL</span>
+        <span class="hero-badge"><span style="color:#fcbf49;">●</span> SIMAS X PPLG B</span>
         <h1 class="hero-title">Yo, What's up!</h1>
         <p class="hero-subtitle">
-            <?= $sapaan ?> kawan-kawan! Di sini kalian dapat mengakses Website resmi kelas, yang akan sangat membantu kalian dalam mengatur jadwal pelajaran, memantau tugas sekolah, transparansi uang kas, dan agenda kegiatan kelas.
+            <?= $sapaan ?> kawan-kawan! Selamat datang di <b>Sistem Informasi Manajemen Siswa & Akademik (SIMAS) Kelas X PPLG B</b>. Solusi digital terintegrasi untuk absensi harian, peminjaman lab RPL, bank materi koding, transparansi kas kelas, pemantauan tugas, dan musyawarah aspirasi siswa.
         </p>
         <div class="hero-actions">
-            <a href="page/jadwal<?= $ext ?>" class="btn btn-primary btn-lg">Lihat Jadwal Lengkap</a>
-            <a href="page/tugas<?= $ext ?>" class="btn btn-secondary btn-lg">Cek Tugas Aktif (<?= $tugas_pending ?>)</a>
+            <a href="page/jadwal<?= $ext ?>" class="btn btn-primary btn-lg">Lihat Jadwal Pelajaran</a>
+            <a href="page/absensi<?= $ext ?>" class="btn btn-secondary btn-lg">Cek Presensi Kelas (<?= $persen_hadir ?>%)</a>
+            <a href="page/inventaris<?= $ext ?>" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">Peminjaman Alat Lab</a>
         </div>
     </section>
 
-    <!-- Quick Stats Grid -->
+    <!-- Quick Stats Grid (4 Metrik Utama) -->
     <section class="stats-grid">
         <div class="stat-card">
-            <div class="stat-icon">📅</div>
+            <div class="stat-icon" style="background-color: var(--success-light); color: var(--success);">👥</div>
             <div class="stat-info">
-                <div class="stat-label">Hari Ini</div>
-                <div class="stat-value"><?= $hari_ini ?></div>
-                <div class="stat-detail"><?= $is_weekend ? 'Libur Akhir Pekan' : count($jadwal_hari_ini) . ' Sesi Pelajaran' ?></div>
+                <div class="stat-label">Kehadiran Hari Ini</div>
+                <div class="stat-value" style="color: var(--success);"><?= $hadir_count ?>/<?= $total_siswa ?> Siswa</div>
+                <div class="stat-detail"><?= $persen_hadir ?>% Tingkat Kehadiran</div>
             </div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon">📝</div>
+            <div class="stat-icon" style="background-color: var(--danger-light); color: var(--danger);">📝</div>
             <div class="stat-info">
                 <div class="stat-label">Tugas Pending</div>
-                <div class="stat-value"><?= $tugas_pending ?> Tugas</div>
+                <div class="stat-value" style="color: var(--danger);"><?= $tugas_pending ?> Tugas</div>
                 <div class="stat-detail">Perlu diselesaikan</div>
             </div>
         </div>
@@ -120,18 +139,16 @@ require_once __DIR__ . '/includes/navbar.php';
             <div class="stat-info">
                 <div class="stat-label">Saldo KAS Kelas</div>
                 <div class="stat-value"><?= format_rupiah($saldo_kas) ?></div>
-                <div class="stat-detail">Transparan & Terkelola</div>
+                <div class="stat-detail">Transparan & Terbuka</div>
             </div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon">🎉</div>
+            <div class="stat-icon" style="background-color: var(--warning-light); color: var(--accent-orange);">🛠️</div>
             <div class="stat-info">
-                <div class="stat-label">Event Terdekat</div>
-                <div class="stat-value" style="font-size: 1.15rem;"><?= $event_terdekat ? htmlspecialchars($event_terdekat['judul']) : 'Belum Ada' ?></div>
-                <div class="stat-detail">
-                    <?= $event_terdekat ? ($hari_tersisa_event === 0 ? 'Hari Ini!' : $hari_tersisa_event . ' hari lagi') : 'Tidak ada agenda' ?>
-                </div>
+                <div class="stat-label">Peminjaman Lab</div>
+                <div class="stat-value" style="color: var(--accent-orange);"><?= $alat_dipinjam ?> Unit</div>
+                <div class="stat-detail">Sedang digunakan siswa</div>
             </div>
         </div>
     </section>
@@ -140,26 +157,21 @@ require_once __DIR__ . '/includes/navbar.php';
     <section class="card">
         <div class="card-header">
             <div class="card-title">
-                <span>🗓️</span> Jadwal Pembelajaran Kelas
+                <span>🗓️</span> Jadwal KBM: Hari Ini (<?= $hari_ini ?>)
             </div>
-            <div style="font-size: 0.9rem; color: var(--text-muted);">
-                Pilih mode jadwal untuk melihat detail sesi
-            </div>
-        </div>
-        <div class="card-body">
-            <!-- Mode Buttons matching original index.html styling -->
-            <div class="buttonjadwal">
+            <div class="buttonjadwal" style="margin: 0;">
                 <button type="button" class="buttonjadwalbiasa active" id="btnJadwalBiasa" onclick="switchSchedule('biasa')">
                     <b>Hari Biasa</b>
                 </button>
                 <button type="button" class="buttonjadwalupacara" id="btnJadwalUpacara" onclick="switchSchedule('upacara')">
                     <b>Hari Upacara</b>
                 </button>
-                <button type="button" class="btn btn-outline" id="btnToggleFoto" onclick="toggleFotoJadwal()" style="margin-left: auto;">
-                    🖼️ Tampilkan Foto Asli
+                <button type="button" class="btn btn-outline btn-sm" id="btnToggleFoto" onclick="toggleFotoJadwal()">
+                    🖼️ Foto Asli
                 </button>
             </div>
-
+        </div>
+        <div class="card-body">
             <!-- Schedule Timetable Display -->
             <div id="scheduleTableContainer">
                 <div class="day-pills">
@@ -176,11 +188,11 @@ require_once __DIR__ . '/includes/navbar.php';
 
                 <!-- Timetable Cards Container -->
                 <div id="timetableCards" class="timetable-grid">
-                    <!-- Populated dynamically via JavaScript from JSON data -->
+                    <!-- Populated dynamically via JS -->
                 </div>
             </div>
 
-            <!-- Original Image Display (as provided in index.html) -->
+            <!-- Original Image Display -->
             <div class="imgjadwal-wrapper" id="fotoJadwalContainer" style="display: none;">
                 <p style="margin-bottom: 12px; font-weight: 600; color: var(--primary-navy);">
                     Dokumen Jadwal Resmi X PPLG B
@@ -190,49 +202,108 @@ require_once __DIR__ . '/includes/navbar.php';
         </div>
     </section>
 
-    <!-- Quick Navigation Features Grid -->
+    <!-- 8 Modul Sistem Informasi Sekolah (Launchpad Grid) -->
     <section style="margin-top: 36px;">
-        <h2 style="font-size: 1.6rem; margin-bottom: 18px; color: var(--primary-navy);">Fitur Utama Kelas</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+            <div>
+                <h2 style="font-size: 1.6rem; color: var(--primary-navy);">Modul Sistem Informasi X PPLG B</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Akses cepat ke seluruh layanan dan sistem kesiswaan terpadu.</p>
+            </div>
+            <span class="badge badge-success">8 Modul Aktif</span>
+        </div>
+
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+            <!-- 1. Jadwal & Piket -->
             <div class="card" style="margin-bottom: 0;">
-                <div class="card-body" style="text-align: center; padding: 28px 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">⏰</div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Jadwal & Piket</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-                        Cek jadwal pelajaran lengkap mingguan, jam istirahat, serta jadwal piket kebersihan kelas harian.
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">⏰</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Jadwal & Piket</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Jadwal KBM mingguan, jam istirahat, serta jadwal regu piket kebersihan kelas.
                     </p>
                     <a href="page/jadwal<?= $ext ?>" class="btn btn-outline btn-sm">Buka Jadwal &rarr;</a>
                 </div>
             </div>
 
+            <!-- 2. Presensi Siswa -->
             <div class="card" style="margin-bottom: 0;">
-                <div class="card-body" style="text-align: center; padding: 28px 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">📌</div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Daftar Tugas</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-                        Monitoring PR dan tugas sekolah, tenggat waktu (deadline), link pengumpulan, dan update status.
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">📋</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Presensi Siswa</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Pencatatan absensi harian (Hadir, Sakit, Izin, Alpa) dan pengajuan surat izin online.
+                    </p>
+                    <a href="page/absensi<?= $ext ?>" class="btn btn-outline btn-sm">Buka Presensi &rarr;</a>
+                </div>
+            </div>
+
+            <!-- 3. Inventaris Lab -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">🛠️</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Peminjaman Lab</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Peminjaman peralatan lab RPL (crimping tool, tester LAN, Arduino, kabel HDMI, proyektor).
+                    </p>
+                    <a href="page/inventaris<?= $ext ?>" class="btn btn-outline btn-sm">Buka Inventaris &rarr;</a>
+                </div>
+            </div>
+
+            <!-- 4. Bank Materi Koding -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">📚</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Bank Materi Koding</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Modul belajar Web, DPK, Git & GitHub, serta potongan kode siap copy untuk praktikum.
+                    </p>
+                    <a href="page/materi<?= $ext ?>" class="btn btn-outline btn-sm">Buka Materi &rarr;</a>
+                </div>
+            </div>
+
+            <!-- 5. Aspirasi & Polling -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">🗳️</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Aspirasi & Polling</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Kotak saran kelas dan sistem pemungutan suara (voting) musyawarah mufakat.
+                    </p>
+                    <a href="page/aspirasi<?= $ext ?>" class="btn btn-outline btn-sm">Buka Aspirasi &rarr;</a>
+                </div>
+            </div>
+
+            <!-- 6. Tugas & PR -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">📌</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Daftar Tugas</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Monitoring PR, tenggat waktu deadline, status pengerjaan, dan link pengumpulan.
                     </p>
                     <a href="page/tugas<?= $ext ?>" class="btn btn-outline btn-sm">Buka Tugas &rarr;</a>
                 </div>
             </div>
 
+            <!-- 7. Kas Kelas -->
             <div class="card" style="margin-bottom: 0;">
-                <div class="card-body" style="text-align: center; padding: 28px 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">💵</div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Kas Kelas</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-                        Laporan kas terbuka dan transparan: pemasukan, pengeluaran perlengkapan, serta status bayar per siswa.
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">💵</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Transparansi Kas</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Laporan arus kas masuk/keluar serta matriks status iuran mingguan 25 siswa.
                     </p>
                     <a href="page/kas<?= $ext ?>" class="btn btn-outline btn-sm">Buka Kas &rarr;</a>
                 </div>
             </div>
 
+            <!-- 8. Events & Agenda -->
             <div class="card" style="margin-bottom: 0;">
-                <div class="card-body" style="text-align: center; padding: 28px 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🏆</div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Events & Agenda</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-                        Kalender agenda kegiatan: Ujian Semester, Class Meeting, Kunjungan Industri, dan pameran karya siswa.
+                <div class="card-body" style="padding: 24px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">🏆</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Events & Agenda</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+                        Kalender kegiatan: Ujian Semester, Class Meeting, Study Tour, dan Expo karya siswa.
                     </p>
                     <a href="page/event<?= $ext ?>" class="btn btn-outline btn-sm">Buka Events &rarr;</a>
                 </div>
@@ -240,38 +311,38 @@ require_once __DIR__ . '/includes/navbar.php';
         </div>
     </section>
 
-    <!-- Info Kelas & Struktur Organisasi -->
+    <!-- Struktur Organisasi Kelas -->
     <section class="card" style="margin-top: 36px;">
         <div class="card-header">
             <div class="card-title">
-                <span>👥</span> Struktur Organisasi Kelas X PPLG B
+                <span>👥</span> Struktur Pengurus Kelas X PPLG B
             </div>
             <span class="badge badge-primary">Tahun Ajaran 2026/2027</span>
         </div>
         <div class="card-body">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
                 <div style="background: var(--bg-white); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center;">
-                    <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Wali Kelas</span>
+                    <span style="font-size: 0.78rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Wali Kelas</span>
                     <h4 style="font-size: 1.05rem; margin-top: 4px;">Bpk. Budi Santoso, S.Kom</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Guru Kejuruan RPL / PPLG</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Guru Kejuruan RPL</p>
                 </div>
                 <div style="background: var(--bg-white); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center;">
-                    <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Ketua Kelas</span>
+                    <span style="font-size: 0.78rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Ketua Kelas</span>
                     <h4 style="font-size: 1.05rem; margin-top: 4px;">Jason Christopher</h4>
                     <p style="font-size: 0.8rem; color: var(--text-muted);">Koordinator Utama</p>
                 </div>
                 <div style="background: var(--bg-white); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center;">
-                    <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Wakil Ketua</span>
+                    <span style="font-size: 0.78rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Wakil Ketua</span>
                     <h4 style="font-size: 1.05rem; margin-top: 4px;">Aditya Pratama</h4>
                     <p style="font-size: 0.8rem; color: var(--text-muted);">Wakil Koordinator</p>
                 </div>
                 <div style="background: var(--bg-white); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center;">
-                    <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Sekretaris</span>
+                    <span style="font-size: 0.78rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Sekretaris</span>
                     <h4 style="font-size: 1.05rem; margin-top: 4px;">Annisa Rahmawati</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Administrasi & Notulensi</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Administrasi & Presensi</p>
                 </div>
                 <div style="background: var(--bg-white); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center;">
-                    <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Bendahara</span>
+                    <span style="font-size: 0.78rem; color: var(--accent-orange); font-weight: 700; text-transform: uppercase;">Bendahara</span>
                     <h4 style="font-size: 1.05rem; margin-top: 4px;">Dina Safitri</h4>
                     <p style="font-size: 0.8rem; color: var(--text-muted);">Pengelola Kas Kelas</p>
                 </div>
@@ -283,7 +354,7 @@ require_once __DIR__ . '/includes/navbar.php';
 <!-- Client Script for Schedule Switcher -->
 <script>
 const scheduleData = <?= json_encode($schedules, JSON_UNESCAPED_UNICODE) ?>;
-let currentMode = 'biasa'; // 'biasa' or 'upacara'
+let currentMode = 'biasa';
 let currentSelectedDay = '<?= $active_day ?>';
 
 function renderTimetable() {
@@ -360,14 +431,13 @@ function toggleFotoJadwal() {
     const btn = document.getElementById('btnToggleFoto');
     if (foto.style.display === 'none') {
         foto.style.display = 'block';
-        btn.textContent = 'Hide Foto Asli';
+        btn.textContent = 'Hide Foto';
     } else {
         foto.style.display = 'none';
-        btn.textContent = '🖼️ Tampilkan Foto Asli';
+        btn.textContent = '🖼️ Foto Asli';
     }
 }
 
-// Initial render
 document.addEventListener('DOMContentLoaded', () => {
     renderTimetable();
 });

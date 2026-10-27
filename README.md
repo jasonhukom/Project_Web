@@ -1,128 +1,146 @@
-# Website Resmi Kelas X PPLG B 🚀
+# SIMAS X PPLG B 🚀
+### Sistem Informasi Manajemen Akademik & Siswa Terpadu
 
-Website portal terpadu untuk siswa **Kelas X PPLG B** (Pengembangan Perangkat Lunak dan GIM). Dirancang untuk mempermudah pengaturan jadwal pelajaran, pemantauan tugas sekolah (PR), transparansi pengelolaan kas kelas, dan kalender kegiatan kelas.
+Sistem Informasi berbasis web untuk lingkungan sekolah kejuruan, khususnya **Kelas X PPLG B** (Pengembangan Perangkat Lunak dan GIM). Dirancang secara modular menggunakan **PHP 8 native** dan dapat dijalankan baik di server lokal, **Vercel Serverless**, maupun **GitHub Pages**.
 
 ---
 
 ## 🎨 Color Palette & Desain
 
 Website ini menggunakan palet warna khas yang hangat, profesional, dan modern:
-- **Navy Deep Blue (`#003049`, `#213B4E`)**: Digunakan untuk navigasi utama, teks judul, dan aksen profesional.
-- **Warm Orange / Amber (`#F77F00`, hover `#FF9729`)**: Warna aksen utama untuk tombol interaktif, highlight status, dan badge.
-- **Warm Cream (`#EAE2B7`, cards `#FAF7EB`)**: Latar belakang yang ramah di mata dan nyaman untuk sesi belajar panjang.
-- **Warm Gold (`#FCBF49`)**: Aksen sub-header dan penanda penting.
-- **Typography**: Kombinasi **Outfit** untuk headline modern dan **Roboto** untuk body text yang mudah dibaca.
+- **Navy Deep Blue (`#003049`, `#213B4E`)**: Header/navbar, judul utama, kartu, dan footer.
+- **Warm Orange / Amber (`#F77F00`, hover `#FF9729`)**: Tombol aksi utama, jadwal aktif, badge status, dan aksen penting.
+- **Warm Cream (`#EAE2B7`, cards `#FAF7EB`)**: Latar belakang yang nyaman di mata dan ramah kontras.
+- **Warm Gold (`#FCBF49`)**: Aksen sub-header, border avatar, dan penanda highlight.
+- **Typography**: Kombinasi **Outfit** (heading) dan **Roboto** (body).
 
 ---
 
-## 🌟 Fitur Utama
+## 🌟 8 Modul Sistem Informasi
 
-### 1. 🏠 Beranda & Dashboard Pintar (`index.php`)
+### 1. 🏠 Executive Dashboard (`index.php`)
 - **Sapaan Dinamis**: Menyesuaikan waktu (Pagi, Siang, Sore, Malam).
-- **Statistik Cepat**: Jumlah sesi hari ini, tugas yang perlu diselesaikan, saldo kas terkini, dan hitung mundur agenda terdekat.
-- **Interactive Timetable Switcher**: Tombol instan untuk beralih antara **Hari Biasa** dan **Hari Upacara**, serta filter per hari.
-- **Dokumen Asli**: Fitur toggle untuk melihat gambar jadwal asli (`jadwal_hari_biasa.jpg`).
-- **Struktur Organisasi**: Wali Kelas, Ketua Kelas, Wakil, Sekretaris, dan Bendahara.
+- **Statistik Cepat Terpadu**: Persentase kehadiran kelas hari ini, tugas aktif, saldo kas, peminjaman lab aktif, dan event terdekat.
+- **Interactive Timetable Switcher**: Beralih instan antara **Hari Biasa** dan **Hari Upacara**.
+- **Launchpad**: Akses langsung ke seluruh 8 modul sistem informasi.
 
 ### 2. 📅 Jadwal Pelajaran & Regu Piket (`page/jadwal.php`)
-- **Jadwal Harian**: Detail mata pelajaran per jam (Senin s/d Jumat), jam istirahat, nama guru pengampu, dan ruang kelas/lab.
-- **Mode Hari Upacara**: Jadwal upacara bendera khusus Senin.
+- **Jadwal KBM Harian**: Detail mata pelajaran per jam (Senin s/d Jumat), jam istirahat, nama guru pengampu, dan ruang kelas/lab.
+- **Mode Upacara**: Jadwal upacara bendera khusus Senin.
 - **Regu Piket Kebersihan**: Pembagian jadwal piket kebersihan harian (Senin - Jumat) dengan badge penanda "Tugas Hari Ini".
 - **Lightbox Preview**: Modal untuk memperbesar dokumen foto jadwal asli.
 
-### 3. 📝 Manajemen Tugas & PR (`page/tugas.php`)
-- **Pencatatan Tugas Lengkap**: Mata pelajaran, judul tugas, deskripsi instruksi, deadline, tingkat prioritas, dan tautan pengumpulan (Google Classroom / GitHub).
-- **Filter Fleksibel**: Filter berdasarkan status (Semua, Belum Selesai, Sedang Dikerjakan, Selesai) dan mata pelajaran.
+### 3. 📋 Presensi & Absensi Siswa (`page/absensi.php`)
+- **Sistem Kehadiran Harian**: Rekap Hadir, Sakit, Izin, dan Alpa per siswa dari 25 siswa X PPLG B.
+- **Tingkat Kehadiran (%)**: Persentase kehadiran kelas hari ini secara otomatis.
+- **Aksi Cepat**: Tombol *Set Semua Hadir* dan update status per siswa.
+- **Permohonan Izin Online**: Formulir pengajuan surat izin/sakit siswa online.
+
+### 4. 🛠️ Inventaris & Peminjaman Lab RPL (`page/inventaris.php`)
+- **Manajemen Alat Praktik**: Katalog alat lab (Crimping Tool, Tester LAN, Arduino Starter Kit, Raspberry Pi, Kabel HDMI, Proyektor).
+- **Log Peminjaman**: Pelacakan nama peminjam, tanggal pinjam, batas kembali, dan keperluan.
+- **Pengembalian Alat**: Tombol konfirmasi pengembalian dengan auto-update stok inventaris.
+
+### 5. 📚 Bank Modul & Materi Koding (`page/materi.php`)
+- **Pusat Materi Belajar**: Kumpulan modul Pemrograman Web, DPK, Git & GitHub, dan Kecerdasan Buatan (AI).
+- **Code Snippet Box**: Potongan kode referensi praktikum dilengkapi tombol **Salin Kode** (Copy to Clipboard).
+- **Berbagi Materi**: Formulir untuk guru dan siswa membagikan materi pembelajaran baru.
+
+### 6. 🗳️ Kotak Aspirasi & Polling Kelas (`page/aspirasi.php`)
+- **Musyawarah Siswa**: Wadah penyampaian saran, kritik, dan usulan fasilitas kelas.
+- **Sistem Polling (Voting)**: Pemungutan suara demokratis dengan live progress bar persentase suara.
+- **Transparansi Respon**: Status aspirasi (Diterima, Sedang Dibahas, Selesai) beserta tanggapan dari wali kelas/pengurus.
+
+### 7. 📝 Manajemen Tugas & PR (`page/tugas.php`)
+- **Pencatatan Tugas Lengkap**: Mapel, judul, deskripsi, deadline, prioritas, dan link pengumpulan.
+- **Filter Fleksibel**: Filter berdasarkan status (Belum Selesai, Dikerjakan, Selesai) dan mata pelajaran.
 - **Pemberitahuan Tenggat**: Indikator otomatis untuk tugas mendesak (*urgent*), hari ini, atau lewat tenggat.
-- **Tambah & Kelola Tugas**: Formulir modal interaktif untuk menambahkan tugas baru dan mengubah status pengerjaan secara langsung.
 
-### 4. 💵 Transparansi Kas Kelas (`page/kas.php`)
-- **Ringkasan Finansial**: Total kas masuk, total pengeluaran, saldo aktif saat ini, dan besaran iuran mingguan (Rp 5.000/minggu).
-- **Buku Kas & Riwayat Transaksi**: Catatan pemasukan dan pengeluaran secara terperinci dengan tanggal, kategori, keterangan, nominal, dan petugas pencatat.
-- **Matriks Iuran Siswa**: Tabel 25 siswa X PPLG B dengan status pembayaran per minggu (Minggu 1 s/d Minggu 4) yang dapat diubah statusnya dengan satu klik.
-- **Pencatatan Transaksi Baru**: Form modal untuk bendahara mencatat pengeluaran perlengkapan atau pemasukan iuran.
-
-### 5. 🏆 Events & Agenda Kelas (`page/event.php`)
-- **Kalender Kegiatan**: Ujian Semester, Class Meeting, Kunjungan Industri ke software house, pameran karya siswa, dan hari besar.
-- **Live Countdown**: Menampilkan sisa hari menuju kegiatan secara otomatis (*Hari Ini*, *Besok*, *X Hari Lagi*, atau *Terlaksana*).
-- **Kategori & Filter**: Filter agenda berdasarkan status (Akan Datang / Selesai) dan kategori (Akademik, Lomba, Study Tour, Pameran, dll.).
-- **Tambah Agenda**: Form modal untuk mendaftarkan kegiatan kelas baru.
+### 8. 💵 Transparansi Kas Kelas (`page/kas.php`)
+- **Ringkasan Finansial**: Total kas masuk, total pengeluaran, saldo aktif saat ini, dan iuran mingguan (Rp 5.000/minggu).
+- **Buku Kas & Riwayat Transaksi**: Catatan pemasukan dan pengeluaran terperinci.
+- **Matriks Iuran Siswa**: Tabel 25 siswa X PPLG B dengan status pembayaran per minggu (M1 s/d M4) dengan one-click toggle.
 
 ---
 
-## 🛠️ Arsitektur & Teknologi
+## ☁️ Menjalankan di Vercel (PHP Serverless)
 
-- **Backend**: Native PHP 8.x (arsitektur modular: `includes/header.php`, `includes/navbar.php`, `includes/footer.php`, `includes/functions.php`).
-- **Data Persistence**: JSON Flat-File storage di folder `data/` (`schedule.json`, `tugas.json`, `kas.json`, `events.json`). Tidak memerlukan setup database MySQL rumit, langsung siap pakai!
-- **Frontend / Styling**: Vanilla CSS Modern dengan CSS Variables, CSS Grid, Flexbox, Glassmorphism, dan dukungan responsif penuh untuk ponsel dan desktop.
+Proyek ini telah dilengkapi file konfigurasi [`vercel.json`](vercel.json) yang kompatibel dengan runtime `vercel-php`:
 
----
+1. Buat akun di **[Vercel](https://vercel.com)** dan hubungkan akun GitHub Anda.
+2. Klik **Add New Project** lalu pilih repository **`Project_Web`**.
+3. Pada bagian **Build and Output Settings**, biarkan default (Vercel otomatis mendeteksi `vercel.json`).
+4. Klik **Deploy**!
+5. Website PHP Anda akan aktif di URL Vercel (misal: `https://project-web-xpplgb.vercel.app`).
 
-## 🚀 Cara Menjalankan Website
-
-1. Pastikan **PHP** (versi 8.0+) telah terpasang di komputer Anda. Cek dengan perintah:
-   ```bash
-   php -v
-   ```
-
-2. Buka terminal di dalam folder proyek (`Project_Web`):
-   ```bash
-   cd Project_Web
-   ```
-
-3. Jalankan server bawaan PHP:
-   ```bash
-   php -S localhost:8000
-   ```
-
-4. Buka peramban (browser) dan akses:
-   ```
-   http://localhost:8000
-   ```
+> File `includes/functions.php` secara otomatis menggunakan cache storage `/tmp` di environment Vercel, sehingga sistem aman dari error *read-only filesystem*.
 
 ---
 
-## 🌐 Deploy Otomatis ke Web (GitHub Actions & Pages)
+## 🌐 Menjalankan di GitHub Actions & Pages
 
-Proyek ini telah dikonfigurasi dengan **GitHub Actions CI/CD** (`.github/workflows/deploy.yml`) untuk build dan deploy otomatis ke **GitHub Pages**:
+Website ini juga dilengkapi workflow **GitHub Actions** ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
 
 1. Buka repositori Anda di GitHub.
-2. Pergi ke tab **Settings** &rarr; **Pages** (di sidebar kiri).
-3. Pada bagian **Build and deployment** &rarr; **Source**, pilih **GitHub Actions**.
-4. Setiap kali Anda melakukan `git push origin main`, GitHub Actions akan:
-   - Menyiapkan environment PHP.
-   - Menjalankan `php build.php` untuk merender seluruh halaman ke folder `dist/`.
-   - Mempublikasikan website ke URL: `https://<username>.github.io/<nama-repo>/`.
+2. Pergi ke tab **Settings** &rarr; **Pages**.
+3. Di bagian **Build and deployment** &rarr; **Source**, pilih **GitHub Actions**.
+4. Setiap ada push ke branch `main`, GitHub Actions otomatis menjalankan `php build.php` dan mempublikasikan website ke:
+   ```
+   https://<username>.github.io/Project_Web/
+   ```
 
-Juga tersedia file `vercel.json` bagi yang ingin menghubungkan repositori ini langsung ke platform **Vercel**.
+---
+
+## 💻 Menjalankan Secara Lokal
+
+```bash
+cd Project_Web
+php -S localhost:8000
+```
+Buka browser di: **`http://localhost:8000`**
+
+---
 
 ## 📁 Struktur Direktori
 
 ```
 Project_Web/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml     # Workflow CI/CD deploy otomatis ke GitHub Pages
 ├── data/
-│   ├── events.json        # Data agenda dan kegiatan kelas
-│   ├── kas.json           # Data transaksi kas dan matriks iuran siswa
-│   ├── schedule.json      # Jadwal pelajaran dan pembagian regu piket
-│   └── tugas.json         # Data penugasan dan deadline tugas
+│   ├── absensi.json       # Data presensi & kehadiran harian siswa
+│   ├── aspirasi.json      # Data kotak saran & polling voting kelas
+│   ├── events.json        # Data kalender kegiatan & agenda kelas
+│   ├── inventaris.json    # Data katalog alat lab & log peminjaman
+│   ├── kas.json           # Data transaksi kas & matriks iuran siswa
+│   ├── materi.json        # Bank materi modul koding & snippet
+│   ├── schedule.json      # Jadwal pelajaran KBM & regu piket
+│   └── tugas.json         # Data penugasan PR & deadline
 ├── image/
-│   ├── jadwal_hari_biasa.jpg  # Foto dokumen jadwal resmi
-│   ├── logo.png               # Logo Kelas X PPLG B
-│   └── logo_profile.png       # Avatar profil kelas
+│   ├── jadwal_hari_biasa.jpg
+│   ├── logo.png
+│   └── logo_profile.png
 ├── includes/
 │   ├── footer.php         # Template footer modular
-│   ├── functions.php      # Fungsi pembantu (format Rupiah, tanggal ID, JSON helper)
-│   ├── header.php         # Template header dan meta tag
-│   └── navbar.php         # Navigasi responsif dengan menu mobile
+│   ├── functions.php      # Helper Vercel /tmp, Rupiah, tanggal ID, JSON
+│   ├── header.php         # Template header & Google Fonts
+│   └── navbar.php         # Navigasi responsif 8 modul
 ├── page/
-│   ├── event.php          # Halaman kalender kegiatan & countdown
-│   ├── jadwal.php         # Halaman jadwal pelajaran & piket kelas
-│   ├── kas.php            # Halaman transparansi kas kelas & matriks siswa
-│   └── tugas.php          # Halaman manajemen tugas & PR
+│   ├── absensi.php        # Modul Presensi & Kehadiran Siswa
+│   ├── aspirasi.php       # Modul Kotak Aspirasi & Polling Kelas
+│   ├── event.php          # Modul Kalender Kegiatan & Events
+│   ├── inventaris.php     # Modul Peminjaman & Inventaris Lab RPL
+│   ├── jadwal.php         # Modul Jadwal Pelajaran & Piket
+│   ├── kas.php            # Modul Transparansi Kas Kelas
+│   ├── materi.php         # Modul Bank Modul & Materi Koding
+│   └── tugas.php          # Modul Manajemen Tugas & PR
 ├── style/
-│   └── style.css          # Design system lengkap dengan palet khas
-├── index.php              # Beranda & dashboard utama kelas
-└── README.md              # Dokumentasi proyek
+│   └── style.css          # Design system lengkap
+├── build.php              # Script compiler static HTML untuk GitHub Pages
+├── index.php              # Executive Dashboard Utama SIMAS
+├── vercel.json            # Konfigurasi Serverless PHP untuk Vercel
+└── README.md              # Dokumentasi lengkap sistem
 ```
 
 ---

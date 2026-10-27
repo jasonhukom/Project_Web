@@ -47,6 +47,10 @@ file_put_contents($distDir . '/.nojekyll', '');
 $pages = [
     'index.php' => 'index.html',
     'page/jadwal.php' => 'page/jadwal.html',
+    'page/absensi.php' => 'page/absensi.html',
+    'page/inventaris.php' => 'page/inventaris.html',
+    'page/materi.php' => 'page/materi.html',
+    'page/aspirasi.php' => 'page/aspirasi.html',
     'page/event.php' => 'page/event.html',
     'page/kas.php' => 'page/kas.html',
     'page/tugas.php' => 'page/tugas.html'
