@@ -1,0 +1,52 @@
+[
+  {
+    "id": "tugas-1",
+    "mapel": "Dasar Program Keahlian",
+    "judul": "Membuat Algoritma Flowchart & Pseudocode",
+    "deskripsi": "Buat studi kasus percabangan dan perulangan menggunakan draw.io atau flowchart manual, lalu tuliskan pseudocode-nya di PDF.",
+    "deadline": "2026-11-02",
+    "status": "Sedang Dikerjakan",
+    "prioritas": "Tinggi",
+    "link": "https://classroom.google.com"
+  },
+  {
+    "id": "tugas-2",
+    "mapel": "Informatika",
+    "judul": "Praktikum Struktur Data Array & Objek",
+    "deskripsi": "Implementasi struktur data array 2 dimensi dan dictionary/object dalam bahasa pemrograman pilihan. Push ke repository GitHub masing-masing.",
+    "deadline": "2026-11-05",
+    "status": "Belum Selesai",
+    "prioritas": "Sedang",
+    "link": "https://github.com"
+  },
+  {
+    "id": "tugas-3",
+    "mapel": "Matematika",
+    "judul": "Latihan Soal Matriks dan Vektor Bab 3",
+    "deskripsi": "Kerjakan latihan mandiri no 1-15 di buku paket Matematika halaman 88. Tulis rapi dengan cara pengerjaan lengkap.",
+    "deadline": "2026-10-30",
+    "status": "Belum Selesai",
+    "prioritas": "Tinggi",
+    "link": ""
+  },
+  {
+    "id": "tugas-4",
+    "mapel": "Bahasa Inggris",
+    "judul": "Presentation: Technology in Modern Life",
+    "deskripsi": "Bikin slide presentasi kelompok (2-3 orang) tentang dampak AI dalam dunia software engineering. Waktu presentasi 7 menit.",
+    "deadline": "2026-11-10",
+    "status": "Sedang Dikerjakan",
+    "prioritas": "Sedang",
+    "link": ""
+  },
+  {
+    "id": "tugas-5",
+    "mapel": "IPAS",
+    "judul": "Laporan Praktikum Ekosistem Lingkungan",
+    "deskripsi": "Laporan tertulis hasil observasi ekosistem taman sekolah beserta foto dokumentasi.",
+    "deadline": "2026-10-25",
+    "status": "Selesai",
+    "prioritas": "Rendah",
+    "link": ""
+  }
+]

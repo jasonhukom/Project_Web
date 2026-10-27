@@ -1,0 +1,52 @@
+[
+  {
+    "id": "event-1",
+    "judul": "Ujian Tengah Semester (UTS)",
+    "tanggal": "2026-11-09",
+    "waktu": "07.30 - 12.00",
+    "lokasi": "Ruang Kelas X PPLG B",
+    "kategori": "Akademik",
+    "deskripsi": "Pelaksanaan UTS Semester Gasal. Jangan lupa bawa kartu ujian dan perlengkapan tulis masing-masing.",
+    "status": "Akan Datang"
+  },
+  {
+    "id": "event-2",
+    "judul": "Class Meeting Olahraga & E-Sports",
+    "tanggal": "2026-12-14",
+    "waktu": "08.00 - 15.00",
+    "lokasi": "Gelanggang Olahraga & Lab 1",
+    "kategori": "Class Meeting",
+    "deskripsi": "Turnamen Futsal, Basket 3x3, dan Mobile Legends antar kelas satu angkatan SMK.",
+    "status": "Akan Datang"
+  },
+  {
+    "id": "event-3",
+    "judul": "Kunjungan Industri Software House",
+    "tanggal": "2026-11-25",
+    "waktu": "08.00 - 16.00",
+    "lokasi": "PT Teknologi Digital Sejahtera",
+    "kategori": "Study Tour",
+    "deskripsi": "Belajar langsung tentang workflow software development, DevOps, dan QA di industri teknologi terkini.",
+    "status": "Akan Datang"
+  },
+  {
+    "id": "event-4",
+    "judul": "Pameran & Expo Karya Aplikasi Siswa",
+    "tanggal": "2026-12-20",
+    "waktu": "09.00 - 14.00",
+    "lokasi": "Aula Utama Sekolah",
+    "kategori": "Pameran",
+    "deskripsi": "Showcase karya website, UI/UX design, dan program buatan siswa X PPLG B ke adik kelas dan wali murid.",
+    "status": "Akan Datang"
+  },
+  {
+    "id": "event-5",
+    "judul": "Peringatan Hari Guru Nasional",
+    "tanggal": "2026-11-25",
+    "waktu": "07.00 - 11.00",
+    "lokasi": "Lapangan Upacara",
+    "kategori": "Sekolah",
+    "deskripsi": "Upacara bendera dan persembahan terima kasih untuk seluruh bapak/ibu guru.",
+    "status": "Akan Datang"
+  }
+]

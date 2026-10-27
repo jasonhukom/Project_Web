@@ -1,0 +1,95 @@
+{
+  "nominal_mingguan": 5000,
+  "transaksi": [
+    {
+      "id": "trx-1",
+      "tanggal": "2026-10-05",
+      "tipe": "masuk",
+      "kategori": "Kas Mingguan",
+      "deskripsi": "Iuran Kas Minggu 1 (30 Siswa)",
+      "nominal": 150000,
+      "petugas": "Bendahara"
+    },
+    {
+      "id": "trx-2",
+      "tanggal": "2026-10-08",
+      "tipe": "keluar",
+      "kategori": "Perlengkapan Kelas",
+      "deskripsi": "Beli spidol whiteboard (3 pcs) & penghapus",
+      "nominal": 35000,
+      "petugas": "Bendahara"
+    },
+    {
+      "id": "trx-3",
+      "tanggal": "2026-10-12",
+      "tipe": "masuk",
+      "kategori": "Kas Mingguan",
+      "deskripsi": "Iuran Kas Minggu 2 (28 Siswa)",
+      "nominal": 140000,
+      "petugas": "Bendahara"
+    },
+    {
+      "id": "trx-4",
+      "tanggal": "2026-10-16",
+      "tipe": "keluar",
+      "kategori": "Kebersihan",
+      "deskripsi": "Beli refill pengharum ruangan & kantong sampah",
+      "nominal": 25000,
+      "petugas": "Bendahara"
+    },
+    {
+      "id": "trx-5",
+      "tanggal": "2026-10-19",
+      "tipe": "masuk",
+      "kategori": "Kas Mingguan",
+      "deskripsi": "Iuran Kas Minggu 3 (30 Siswa)",
+      "nominal": 150000,
+      "petugas": "Bendahara"
+    },
+    {
+      "id": "trx-6",
+      "tanggal": "2026-10-22",
+      "tipe": "keluar",
+      "kategori": "Kegiatan Kelas",
+      "deskripsi": "Fotokopi modul latihan Dasar Program Keahlian",
+      "nominal": 45000,
+      "petugas": "Bendahara"
+    },
+    {
+      "id": "trx-7",
+      "tanggal": "2026-10-26",
+      "tipe": "masuk",
+      "kategori": "Kas Mingguan",
+      "deskripsi": "Iuran Kas Minggu 4 (25 Siswa)",
+      "nominal": 125000,
+      "petugas": "Bendahara"
+    }
+  ],
+  "siswa": [
+    { "absen": 1, "nama": "Aditya Pratama", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 2, "nama": "Annisa Rahmawati", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 3, "nama": "Bagas Saputra", "m1": true, "m2": true, "m3": true, "m4": false },
+    { "absen": 4, "nama": "Chandra Wijaya", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 5, "nama": "Dina Safitri", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 6, "nama": "Eko Prasetyo", "m1": true, "m2": true, "m3": false, "m4": false },
+    { "absen": 7, "nama": "Fadhil Nugroho", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 8, "nama": "Gita Gutawa", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 9, "nama": "Hafiz Al-Faruq", "m1": true, "m2": true, "m3": true, "m4": false },
+    { "absen": 10, "nama": "Indah Permata", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 11, "nama": "Jason Christopher", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 12, "nama": "Kevin Sanjaya", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 13, "nama": "Larasati Putri", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 14, "nama": "Muhammad Rizky", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 15, "nama": "Nabila Syakieb", "m1": true, "m2": false, "m3": true, "m4": false },
+    { "absen": 16, "nama": "Oki Setiana", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 17, "nama": "Putri Maharani", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 18, "nama": "Rian Hidayat", "m1": true, "m2": true, "m3": true, "m4": false },
+    { "absen": 19, "nama": "Siti Aisyah", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 20, "nama": "Tegar Wicaksono", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 21, "nama": "Umar Faruq", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 22, "nama": "Vina Panduwinata", "m1": true, "m2": true, "m3": true, "m4": false },
+    { "absen": 23, "nama": "Wahyu Pratama", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 24, "nama": "Yoga Pratama", "m1": true, "m2": true, "m3": true, "m4": true },
+    { "absen": 25, "nama": "Zahra Nurhaliza", "m1": true, "m2": true, "m3": true, "m4": true }
+  ]
+}
