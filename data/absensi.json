@@ -1,0 +1,30 @@
+{
+  "tanggal_aktif": "2026-10-27",
+  "records": [
+    { "absen": 1, "nama": "Aditya Pratama", "status": "Hadir", "keterangan": "-" },
+    { "absen": 2, "nama": "Annisa Rahmawati", "status": "Hadir", "keterangan": "-" },
+    { "absen": 3, "nama": "Bagas Saputra", "status": "Hadir", "keterangan": "-" },
+    { "absen": 4, "nama": "Chandra Wijaya", "status": "Hadir", "keterangan": "-" },
+    { "absen": 5, "nama": "Dina Safitri", "status": "Hadir", "keterangan": "-" },
+    { "absen": 6, "nama": "Eko Prasetyo", "status": "Sakit", "keterangan": "Surat dokter terlampir" },
+    { "absen": 7, "nama": "Fadhil Nugroho", "status": "Hadir", "keterangan": "-" },
+    { "absen": 8, "nama": "Gita Gutawa", "status": "Hadir", "keterangan": "-" },
+    { "absen": 9, "nama": "Hafiz Al-Faruq", "status": "Izin", "keterangan": "Mengikuti lomba catur tingkat kota" },
+    { "absen": 10, "nama": "Indah Permata", "status": "Hadir", "keterangan": "-" },
+    { "absen": 11, "nama": "Jason Christopher", "status": "Hadir", "keterangan": "-" },
+    { "absen": 12, "nama": "Kevin Sanjaya", "status": "Hadir", "keterangan": "-" },
+    { "absen": 13, "nama": "Larasati Putri", "status": "Hadir", "keterangan": "-" },
+    { "absen": 14, "nama": "Muhammad Rizky", "status": "Hadir", "keterangan": "-" },
+    { "absen": 15, "nama": "Nabila Syakieb", "status": "Hadir", "keterangan": "-" },
+    { "absen": 16, "nama": "Oki Setiana", "status": "Hadir", "keterangan": "-" },
+    { "absen": 17, "nama": "Putri Maharani", "status": "Hadir", "keterangan": "-" },
+    { "absen": 18, "nama": "Rian Hidayat", "status": "Hadir", "keterangan": "-" },
+    { "absen": 19, "nama": "Siti Aisyah", "status": "Hadir", "keterangan": "-" },
+    { "absen": 20, "nama": "Tegar Wicaksono", "status": "Hadir", "keterangan": "-" },
+    { "absen": 21, "nama": "Umar Faruq", "status": "Hadir", "keterangan": "-" },
+    { "absen": 22, "nama": "Vina Panduwinata", "status": "Hadir", "keterangan": "-" },
+    { "absen": 23, "nama": "Wahyu Pratama", "status": "Hadir", "keterangan": "-" },
+    { "absen": 24, "nama": "Yoga Pratama", "status": "Hadir", "keterangan": "-" },
+    { "absen": 25, "nama": "Zahra Nurhaliza", "status": "Hadir", "keterangan": "-" }
+  ]
+}

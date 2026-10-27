@@ -1,0 +1,54 @@
+{
+  "barang": [
+    { "id": "BRG-01", "nama": "Crimping Tool RJ45 (Kuning)", "kategori": "Tool Jaringan", "kondisi": "Baik", "status": "Tersedia", "stok": 4 },
+    { "id": "BRG-02", "nama": "LAN Cable Tester Digital", "kategori": "Tool Jaringan", "kondisi": "Baik", "status": "Dipinjam", "stok": 1 },
+    { "id": "BRG-03", "nama": "Arduino Uno R3 Starter Kit", "kategori": "IoT & Hardware", "kondisi": "Sangat Baik", "status": "Dipinjam", "stok": 0 },
+    { "id": "BRG-04", "nama": "Raspberry Pi 4 Model B (4GB)", "kategori": "IoT & Hardware", "kondisi": "Baik", "status": "Tersedia", "stok": 2 },
+    { "id": "BRG-05", "nama": "Kabel HDMI to HDMI (5 Meter)", "kategori": "Aksesoris Lab", "kondisi": "Baik", "status": "Tersedia", "stok": 3 },
+    { "id": "BRG-06", "nama": "Proyektor Epson EB-X400 Lab RPL", "kategori": "Presentasi", "kondisi": "Baik", "status": "Dipinjam", "stok": 0 },
+    { "id": "BRG-07", "nama": "Router Mikrotik RB750Gr3", "kategori": "Jaringan Komputer", "kondisi": "Baik", "status": "Tersedia", "stok": 3 },
+    { "id": "BRG-08", "nama": "Flashdisk Bootable Windows & Ubuntu 32GB", "kategori": "Media Storage", "kondisi": "Baik", "status": "Tersedia", "stok": 5 }
+  ],
+  "peminjaman": [
+    {
+      "id": "PINJAM-01",
+      "barang_id": "BRG-02",
+      "nama_barang": "LAN Cable Tester Digital",
+      "peminjam": "Jason Christopher",
+      "tgl_pinjam": "2026-10-26",
+      "tgl_kembali": "2026-10-28",
+      "keperluan": "Praktikum crimping kabel LAN cross/straight",
+      "status": "Dipinjam"
+    },
+    {
+      "id": "PINJAM-02",
+      "barang_id": "BRG-03",
+      "nama_barang": "Arduino Uno R3 Starter Kit",
+      "peminjam": "Aditya Pratama",
+      "tgl_pinjam": "2026-10-25",
+      "tgl_kembali": "2026-10-29",
+      "keperluan": "Tugas projek robotik sensor ultrasonik",
+      "status": "Dipinjam"
+    },
+    {
+      "id": "PINJAM-03",
+      "barang_id": "BRG-06",
+      "nama_barang": "Proyektor Epson EB-X400 Lab RPL",
+      "peminjam": "Bagas Saputra",
+      "tgl_pinjam": "2026-10-27",
+      "tgl_kembali": "2026-10-27",
+      "keperluan": "Presentasi kelompok Bahasa Inggris",
+      "status": "Dipinjam"
+    },
+    {
+      "id": "PINJAM-04",
+      "barang_id": "BRG-01",
+      "nama_barang": "Crimping Tool RJ45 (Kuning)",
+      "peminjam": "Kevin Sanjaya",
+      "tgl_pinjam": "2026-10-20",
+      "tgl_kembali": "2026-10-21",
+      "keperluan": "Praktikum jaringan dasar",
+      "status": "Dikembalikan"
+    }
+  ]
+}

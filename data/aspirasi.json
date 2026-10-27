@@ -1,0 +1,57 @@
+{
+  "polling": [
+    {
+      "id": "poll-1",
+      "judul": "Pemilihan Warna Dasar Kaos Kelas X PPLG B",
+      "deskripsi": "Yuk vote warna dasar untuk kaos angkatan kelas kita yang akan dipakai saat class meeting!",
+      "status": "Aktif",
+      "total_votes": 25,
+      "opsi": [
+        { "id": 1, "teks": "Navy Blue & Orange (Khas Identitas Kelas)", "votes": 14 },
+        { "id": 2, "teks": "Hitam Solid Minimalis", "votes": 7 },
+        { "id": 3, "teks": "Putih Krem & Emas", "votes": 4 }
+      ]
+    },
+    {
+      "id": "poll-2",
+      "judul": "Destinasi Kunjungan Industri Semester Gasal",
+      "deskripsi": "Pilih industri software engineering yang paling ingin dikunjungi.",
+      "status": "Aktif",
+      "total_votes": 22,
+      "opsi": [
+        { "id": 1, "teks": "Software House & Startup Digital", "votes": 12 },
+        { "id": 2, "teks": "Data Center & Cloud Provider", "votes": 6 },
+        { "id": 3, "teks": "Game Studio / Multimedia House", "votes": 4 }
+      ]
+    }
+  ],
+  "aspirasi": [
+    {
+      "id": "asp-1",
+      "tanggal": "2026-10-24",
+      "pengirim": "Siswa X PPLG B",
+      "kategori": "Fasilitas Kelas",
+      "pesan": "Mohon pengurus kelas membeli kabel extension (colokan listrik) tambahan karena meja belakang sering rebutan colokan saat buka laptop.",
+      "status": "Sedang Dibahas",
+      "tanggapan": "Akan dialokasikan dari uang kas minggu ini sebesar Rp 45.000 (Bendahara/Ketua Kelas)."
+    },
+    {
+      "id": "asp-2",
+      "tanggal": "2026-10-20",
+      "pengirim": "Anonim",
+      "kategori": "KBM & Belajar",
+      "pesan": "Bisa diadakan sesi belajar koding bareng sepulang sekolah di Lab RPL 1 seminggu sekali untuk yang belum paham materi percabangan?",
+      "status": "Selesai",
+      "tanggapan": "Disetujui! Setiap hari Kamis pukul 15.30 ada Study Club didampingi tutor sebaya."
+    },
+    {
+      "id": "asp-3",
+      "tanggal": "2026-10-26",
+      "pengirim": "Annisa R.",
+      "kategori": "Kebersihan",
+      "pesan": "Perlu dibuat pengingat di papan tulis bagi petugas piket yang belum menjalankan tugasnya sebelum pulang.",
+      "status": "Diterima",
+      "tanggapan": "Noted, sekretaris akan membuatkan reminder checklist harian di samping papan tulis."
+    }
+  ]
+}

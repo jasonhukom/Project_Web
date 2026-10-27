@@ -34,25 +34,43 @@ function format_tanggal_id($tanggal_str) {
     return "{$hari_nama}, {$tgl} {$bln} {$thn}";
 }
 
-// Membaca file data JSON
+// Membaca file data JSON (mendukung Vercel & serverless /tmp fallback)
 function read_json($filename, $default = []) {
+    $tmp_path = sys_get_temp_dir() . '/' . $filename;
+    if (file_exists($tmp_path)) {
+        $content = @file_get_contents($tmp_path);
+        $data = json_decode($content, true);
+        if (is_array($data)) return $data;
+    }
+
     $path = BASE_PATH . '/data/' . $filename;
     if (!file_exists($path)) {
         return $default;
     }
-    $content = file_get_contents($path);
+    $content = @file_get_contents($path);
     $data = json_decode($content, true);
     return is_array($data) ? $data : $default;
 }
 
-// Menyimpan data ke file JSON
+// Menyimpan data ke file JSON (mendukung Vercel & serverless /tmp fallback)
 function write_json($filename, $data) {
+    $encoded = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+    // Update /tmp file (tersedia di runtime Vercel)
+    $tmp_path = sys_get_temp_dir() . '/' . $filename;
+    @file_put_contents($tmp_path, $encoded);
+
+    // Coba simpan ke folder data lokal jika filesystem writable
     $dir = BASE_PATH . '/data';
     if (!is_dir($dir)) {
-        mkdir($dir, 0777, true);
+        @mkdir($dir, 0777, true);
     }
     $path = $dir . '/' . $filename;
-    return file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) !== false;
+    if (is_writable($dir) || (file_exists($path) && is_writable($path))) {
+        return @file_put_contents($path, $encoded) !== false;
+    }
+
+    return true;
 }
 
 // Menghitung sisa hari

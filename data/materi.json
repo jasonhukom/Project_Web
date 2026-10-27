@@ -1,0 +1,57 @@
+[
+  {
+    "id": "mat-1",
+    "mapel": "Dasar Program Keahlian",
+    "kategori": "Pemrograman",
+    "judul": "Konsep Algoritma, Flowchart & Pseudocode",
+    "guru": "Bpk. Budi Santoso S.Kom",
+    "deskripsi": "Panduan dasar memahami logika pemrograman komputer, simbol-simbol flowchart standar ANSI, dan contoh penulisan pseudocode percabangan if-else.",
+    "link_modul": "https://drive.google.com",
+    "snippet_lang": "php",
+    "snippet_code": "<?php\n// Contoh Algoritma Cek Kelulusan Nilai\n$nilai = 85;\nif ($nilai >= 75) {\n    echo \"Selamat, Anda Lulus Kompetensi!\";\n} else {\n    echo \"Perlu Remedial Tugas.\";\n}\n?>"
+  },
+  {
+    "id": "mat-2",
+    "mapel": "Informatika",
+    "kategori": "Web Development",
+    "judul": "Struktur Dasar HTML5 & Semantic Elements",
+    "guru": "Bpk. Hendra S.Kom",
+    "deskripsi": "Modul praktikum pembuatan halaman web standar W3C menggunakan semantic tags seperti header, nav, main, section, article, dan footer.",
+    "link_modul": "https://developer.mozilla.org",
+    "snippet_lang": "html",
+    "snippet_code": "<!DOCTYPE html>\n<html lang=\"id\">\n<head>\n    <title>Belajar Web PPLG</title>\n</head>\n<body>\n    <header><h1>Halo Dunia!</h1></header>\n</body>\n</html>"
+  },
+  {
+    "id": "mat-3",
+    "mapel": "Informatika",
+    "kategori": "Styling",
+    "judul": "CSS Modern: Flexbox & Grid Layout",
+    "guru": "Bpk. Hendra S.Kom",
+    "deskripsi": "Teknik penataan layout responsif tanpa float menggunakan display flex dan grid, justify-content, align-items, dan media queries.",
+    "link_modul": "https://css-tricks.com",
+    "snippet_lang": "css",
+    "snippet_code": ".card-container {\n    display: flex;\n    gap: 16px;\n    flex-wrap: wrap;\n    justify-content: center;\n}"
+  },
+  {
+    "id": "mat-4",
+    "mapel": "Dasar Program Keahlian",
+    "kategori": "Version Control",
+    "judul": "Cheat Sheet Git & Kolaborasi GitHub",
+    "guru": "Bpk. Budi Santoso S.Kom",
+    "deskripsi": "Perintah dasar git yang wajib dikuasai programmer: git init, git add, git commit, git branch, git pull, dan git push origin main.",
+    "link_modul": "https://git-scm.com/doc",
+    "snippet_lang": "bash",
+    "snippet_code": "# Workflow Git Dasar:\ngit status\ngit add .\ngit commit -m \"feat: tambah fitur baru\"\ngit push origin main"
+  },
+  {
+    "id": "mat-5",
+    "mapel": "KKA (Koding & AI)",
+    "kategori": "Kecerdasan Buatan",
+    "judul": "Pengenalan Python & Dasar Prompt Engineering AI",
+    "guru": "Bpk. Rahmat S.T",
+    "deskripsi": "Dasar bahasa pemrograman Python untuk kecerdasan artifisial dan teknik menyusun prompt terstruktur untuk memecahkan masalah pemrograman.",
+    "link_modul": "https://python.org",
+    "snippet_lang": "python",
+    "snippet_code": "def sapa_kelas(nama):\n    return f\"Semangat belajar koding, {nama}!\"\n\nprint(sapa_kelas(\"X PPLG B\"))"
+  }
+]
