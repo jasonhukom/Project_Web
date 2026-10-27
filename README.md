@@ -1,7 +1,7 @@
 # SIMAS X PPLG B 🚀
 ### Sistem Informasi Manajemen Akademik & Siswa Terpadu
 
-Sistem Informasi berbasis web untuk lingkungan sekolah kejuruan, khususnya **Kelas X PPLG B** (Pengembangan Perangkat Lunak dan GIM). Dirancang secara modular menggunakan **PHP 8 native** dan dapat dijalankan baik di server lokal, **Vercel Serverless**, maupun **GitHub Pages**.
+Sistem Informasi berbasis web untuk lingkungan sekolah kejuruan, khususnya **Kelas X PPLG B** (Pengembangan Perangkat Lunak dan GIM). Dirancang secara modular menggunakan **PHP 8 native** dan siap dijalankan baik di server lokal maupun **Vercel Serverless**.
 
 ---
 
@@ -65,29 +65,15 @@ Website ini menggunakan palet warna khas yang hangat, profesional, dan modern:
 
 ## ☁️ Menjalankan di Vercel (PHP Serverless)
 
-Proyek ini telah dilengkapi file konfigurasi [`vercel.json`](vercel.json) yang kompatibel dengan runtime `vercel-php`:
+Proyek ini telah dilengkapi konfigurasi [`vercel.json`](vercel.json) dan router serverless [`api/index.php`](api/index.php) yang kompatibel dengan runtime `vercel-php@0.7.3`:
 
 1. Buat akun di **[Vercel](https://vercel.com)** dan hubungkan akun GitHub Anda.
 2. Klik **Add New Project** lalu pilih repository **`Project_Web`**.
-3. Pada bagian **Build and Output Settings**, biarkan default (Vercel otomatis mendeteksi `vercel.json`).
+3. Pada bagian **Build and Output Settings**, biarkan default (Vercel otomatis mendeteksi `vercel.json` dan fungsi di `api/index.php`).
 4. Klik **Deploy**!
 5. Website PHP Anda akan aktif di URL Vercel (misal: `https://project-web-xpplgb.vercel.app`).
 
 > File `includes/functions.php` secara otomatis menggunakan cache storage `/tmp` di environment Vercel, sehingga sistem aman dari error *read-only filesystem*.
-
----
-
-## 🌐 Menjalankan di GitHub Actions & Pages
-
-Website ini juga dilengkapi workflow **GitHub Actions** ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
-
-1. Buka repositori Anda di GitHub.
-2. Pergi ke tab **Settings** &rarr; **Pages**.
-3. Di bagian **Build and deployment** &rarr; **Source**, pilih **GitHub Actions**.
-4. Setiap ada push ke branch `main`, GitHub Actions otomatis menjalankan `php build.php` dan mempublikasikan website ke:
-   ```
-   https://<username>.github.io/Project_Web/
-   ```
 
 ---
 
@@ -105,9 +91,8 @@ Buka browser di: **`http://localhost:8000`**
 
 ```
 Project_Web/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml     # Workflow CI/CD deploy otomatis ke GitHub Pages
+├── api/
+│   └── index.php          # Entrypoint router Serverless PHP untuk Vercel
 ├── data/
 │   ├── absensi.json       # Data presensi & kehadiran harian siswa
 │   ├── aspirasi.json      # Data kotak saran & polling voting kelas
@@ -137,7 +122,6 @@ Project_Web/
 │   └── tugas.php          # Modul Manajemen Tugas & PR
 ├── style/
 │   └── style.css          # Design system lengkap
-├── build.php              # Script compiler static HTML untuk GitHub Pages
 ├── index.php              # Executive Dashboard Utama SIMAS
 ├── vercel.json            # Konfigurasi Serverless PHP untuk Vercel
 └── README.md              # Dokumentasi lengkap sistem

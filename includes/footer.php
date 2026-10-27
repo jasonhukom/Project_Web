@@ -51,7 +51,7 @@ $event_url      = ($base_url === '') ? "page/event{$ext}" : "event{$ext}";
     <div class="footer-bottom">
         <div class="footer-bottom-inner">
             <p>&copy; <?= date('Y') ?> <b>SIMAS X PPLG B</b> - Sistem Informasi Siswa & Kesiswaan</p>
-            <p class="tech-stack">PHP 8 &bull; Vercel Serverless Ready &bull; GitHub Pages CI/CD</p>
+            <p class="tech-stack">PHP 8 &bull; Vercel Serverless Ready</p>
         </div>
     </div>
 </footer>
